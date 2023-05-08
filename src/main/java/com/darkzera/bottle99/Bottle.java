@@ -27,14 +27,14 @@ public class Bottle {
                 return  number + " "+container(number) + " of beer on the wall, " +
                         number +" "+ container(number) +  " of beer.\n" +
 
-                        "Take it down and pass it around, " +
+                        "Take " +pronun(number) + " down and pass it around, " +
                         "no more bottles of beer on the wall.\n";
 
             default:
                 return  number + " " + container(number) + " of beer on the wall, " +
                         number + " " + container(number) + " of beer.\n" +
 
-                        "Take one down and pass it around, " +
+                        "Take " +pronun(number) + " down and pass it around, " +
                         --number + " " + container(--number) + " of beer on the wall.\n";
         }
     }
@@ -45,6 +45,10 @@ public class Bottle {
 
     public String container(int number){
         return number <= 1 ? "bottle" : "bottles";
+    }
+
+    public String pronun(int number){
+       return number == 1 ? "it" : "one";
     }
 
 
