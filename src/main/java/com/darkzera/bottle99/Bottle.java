@@ -23,19 +23,12 @@ public class Bottle {
                         "Go to the store and buy some more, " +
                         "99 bottles of beer on the wall.\n";
 
-            case 1:
-                return  number + " "+container(number) + " of beer on the wall, " +
-                        number +" "+ container(number) +  " of beer.\n" +
-
-                        "Take " +pronun(number) + " down and pass it around, " +
-                        "no more bottles of beer on the wall.\n";
-
             default:
                 return  number + " " + container(number) + " of beer on the wall, " +
                         number + " " + container(number) + " of beer.\n" +
 
-                        "Take " +pronun(number) + " down and pass it around, " +
-                        --number + " " + container(--number) + " of beer on the wall.\n";
+                        "Take " + pronun(number) + " down and pass it around, " +
+                        quantity(number-1) + " " + container(number-1) +"" + " of beer on the wall.\n";
         }
     }
 
@@ -44,11 +37,19 @@ public class Bottle {
     }
 
     public String container(int number){
-        return number <= 1 ? "bottle" : "bottles";
+        if (number == 1){
+            return "bottle";
+        } else {
+            return "bottles";
+        }
     }
 
     public String pronun(int number){
        return number == 1 ? "it" : "one";
+    }
+
+    public String quantity(int number){
+        return number == 0 ? "no more" : String.valueOf(number);
     }
 
 
