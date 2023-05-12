@@ -14,22 +14,12 @@ public class Bottle {
     }
 
     public String verse(int number){
-        switch (number){
+        final int successor = successor(number);
 
-            case 0:
-                return "No more bottles of beer on the wall, " +
-                        "no more bottles of beer.\n" +
-
-                        "Go to the store and buy some more, " +
-                        "99 bottles of beer on the wall.\n";
-
-            default:
-                return  number + " " + container(number) + " of beer on the wall, " +
-                        number + " " + container(number) + " of beer.\n" +
-
-                        "Take " + pronun(number) + " down and pass it around, " +
-                        quantity(number-1) + " " + container(number-1) +"" + " of beer on the wall.\n";
-        }
+                return  capitalize(quantity(number)) + " " + container(number) + " of beer on the wall, " +
+                        quantity(number) + " " + container(number) + " of beer.\n" +
+                        action(number) +
+                        quantity(successor) + " " + container(successor) +"" + " of beer on the wall.\n";
     }
 
     public String song(){
@@ -40,19 +30,60 @@ public class Bottle {
         if (number == 1){
             return "bottle";
         } else {
-            return "bottles";
+            final String bottles = "bottles";
+            return bottles;
         }
     }
 
     public String pronun(int number){
-       return number == 1 ? "it" : "one";
+        return number == 1 ? "it" : "one";
     }
 
     public String quantity(int number){
-        return number == 0 ? "no more" : String.valueOf(number);
+        switch (number){
+            case 0:
+                return "no more";
+            case -1:
+                return "99";
+            default:
+                return String.valueOf(number);
+        }
     }
 
+    public int successor(int number) {
+        switch (number) {
+            case 0:
+                return 99;
+            default:
+                return number - 1;
+        }
+    }
 
+    public String action(int number){
+        switch (number){
+            case 0:
+                return "Go to the store and buy some more, ";
+            default:
+                return "Take " + pronun(number) + " down and pass it around, ";
+        }
+    }
 
+    public String capitalize(String v){
 
+        String buildable = "";
+        char[] chars = v.toCharArray();
+
+        if (!v.isEmpty()){
+            for (int i = 0; i < chars.length; i++) {
+                char fill = chars[i];
+                if (i == 0)
+                    fill = Character.toUpperCase(fill);
+                buildable += fill;
+            }
+        }
+
+        return buildable;
+    }
 }
+
+
