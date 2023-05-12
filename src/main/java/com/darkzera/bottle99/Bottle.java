@@ -15,19 +15,27 @@ public class Bottle {
 
     public String verse(int number){
 
-        final BottleNumber btt = new BottleNumber(number);
-
-        final BottleNumber bttNext = new BottleNumber(btt.successor());
+        final BottleNumber btt = FactoryBottle.create(number);
 
         return capitalize(btt.printAbout()) + " of beer on the wall, " +
                 btt.printAbout() + " of beer.\n" +
                 btt.action() +
-                bttNext.printAbout() + " of beer on the wall.\n";
+                btt.successor().printAbout() + " of beer on the wall.\n";
 
     }
 
     public String song(){
         return verses(99, 0);
+    }
+
+    public BottleNumber bottleNumberFor(int number){
+        switch (number){
+            case 0: return new BottleNumber0(number);
+
+            case 1: return new BottleNumber1(number);
+
+            default: return new BottleNumber(number);
+        }
     }
 
     public String container(int number) throws NoSuchMethodException {

@@ -32,12 +32,12 @@ public class BottleNumber {
         }
     }
 
-    public int successor() {
+    public BottleNumber successor() {
         switch (this.number) {
             case 0:
-                return 99;
+                return FactoryBottle.create(99);
             default:
-                return number - 1;
+                return FactoryBottle.create(number - 1);
         }
     }
 
