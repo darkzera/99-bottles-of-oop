@@ -5,8 +5,11 @@ public class Bottle {
     public String verses(int max, int min){
         String result = "";
 
-        for (int i = max; i >= min; i--)
+        for (int i = max; i >= min; i--){
+
             result += verse(i);
+
+        }
 
 
         System.out.printf(result);
@@ -27,45 +30,23 @@ public class Bottle {
     }
 
     public String container(int number){
-        if (number == 1){
-            return "bottle";
-        } else {
-            final String bottles = "bottles";
-            return bottles;
-        }
+        return new BottleNumber(number).container(number);
     }
 
     public String pronun(int number){
-        return number == 1 ? "it" : "one";
+        return new BottleNumber(number).pronun(number);
     }
 
     public String quantity(int number){
-        switch (number){
-            case 0:
-                return "no more";
-            case -1:
-                return "99";
-            default:
-                return String.valueOf(number);
-        }
+        return new BottleNumber(number).quantity(number);
     }
 
     public int successor(int number) {
-        switch (number) {
-            case 0:
-                return 99;
-            default:
-                return number - 1;
-        }
+        return new BottleNumber(number).successor(number);
     }
 
     public String action(int number){
-        switch (number){
-            case 0:
-                return "Go to the store and buy some more, ";
-            default:
-                return "Take " + pronun(number) + " down and pass it around, ";
-        }
+        return new BottleNumber(number).action(number);
     }
 
     public String capitalize(String v){
