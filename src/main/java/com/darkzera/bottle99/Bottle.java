@@ -1,52 +1,53 @@
 package com.darkzera.bottle99;
 
+
+
 public class Bottle {
 
     public String verses(int max, int min){
         String result = "";
 
-        for (int i = max; i >= min; i--){
-
+        for (int i = max; i >= min; i--)
             result += verse(i);
 
-        }
-
-
-        System.out.printf(result);
         return result;
     }
 
     public String verse(int number){
-        final int successor = successor(number);
 
-                return  capitalize(quantity(number)) + " " + container(number) + " of beer on the wall, " +
-                        quantity(number) + " " + container(number) + " of beer.\n" +
-                        action(number) +
-                        quantity(successor) + " " + container(successor) +"" + " of beer on the wall.\n";
+        final BottleNumber btt = new BottleNumber(number);
+
+        final BottleNumber bttNext = new BottleNumber(btt.successor());
+
+        return capitalize(btt.printAbout()) + " of beer on the wall, " +
+                btt.printAbout() + " of beer.\n" +
+                btt.action() +
+                bttNext.printAbout() + " of beer on the wall.\n";
+
     }
 
     public String song(){
         return verses(99, 0);
     }
 
-    public String container(int number){
-        return new BottleNumber(number).container(number);
+    public String container(int number) throws NoSuchMethodException {
+        throw new NoSuchMethodException();
     }
 
-    public String pronun(int number){
-        return new BottleNumber(number).pronun(number);
+    public String pronun(int number) throws NoSuchMethodException {
+        throw new NoSuchMethodException();
     }
 
-    public String quantity(int number){
-        return new BottleNumber(number).quantity(number);
+    public String quantity(int number) throws NoSuchMethodException {
+        throw new NoSuchMethodException();
     }
 
-    public int successor(int number) {
-        return new BottleNumber(number).successor(number);
+    public int successor(int number) throws NoSuchMethodException {
+        throw new NoSuchMethodException();
     }
 
-    public String action(int number){
-        return new BottleNumber(number).action(number);
+    public String action(int number) throws NoSuchMethodException {
+        throw new NoSuchMethodException();
     }
 
     public String capitalize(String v){

@@ -2,14 +2,14 @@ package com.darkzera.bottle99;
 
 public class BottleNumber {
 
-    public int data;
+    public int number;
 
     public BottleNumber(int n){
-        this.data = n;
+        this.number = n;
     }
 
-    public String container(int number){
-        if (number == 1){
+    public String container(){
+        if (this.number == 1){
             return "bottle";
         } else {
             final String bottles = "bottles";
@@ -17,23 +17,23 @@ public class BottleNumber {
         }
     }
 
-    public String pronun(int number){
-        return number == 1 ? "it" : "one";
+    public String pronun(){
+        return this.number == 1 ? "it" : "one";
     }
 
-    public String quantity(int number){
-        switch (number){
+    public String quantity(){
+        switch (this.number){
             case 0:
                 return "no more";
             case -1:
                 return "99";
             default:
-                return String.valueOf(number);
+                return String.valueOf(this.number);
         }
     }
 
-    public int successor(int number) {
-        switch (number) {
+    public int successor() {
+        switch (this.number) {
             case 0:
                 return 99;
             default:
@@ -41,13 +41,17 @@ public class BottleNumber {
         }
     }
 
-    public String action(int number){
-        switch (number){
+    public String action(){
+        switch (this.number){
             case 0:
                 return "Go to the store and buy some more, ";
             default:
-                return "Take " + pronun(number) + " down and pass it around, ";
+                return "Take " + pronun() + " down and pass it around, ";
         }
+    }
+
+    public String printAbout(){
+       return this.quantity() + " " + this.container();
     }
 
 }
