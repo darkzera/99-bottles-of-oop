@@ -81,6 +81,16 @@ public class BottleTest{
     }
 
     @Test
+    public void sixPack(){
+        String exp = "7 bottles of beer on the wall, 7 bottles of beer.\n" +
+                "Take one down and pass it around, 1 six-pack of beer on the wall.\n" +
+                "1 six-pack of beer on the wall, 1 six-pack of beer.\n" +
+                "Take one down and pass it around, 5 bottles of beer on the wall.\n";
+
+        assertThat(bottles.verses(7,6), is(exp));
+    }
+
+    @Test
     public void isCapitalizedOnlyFirstLetter(){
         assertThat(bottles.capitalize("sim bio"), is("Sim bio"));
     }
